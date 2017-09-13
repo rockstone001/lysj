@@ -1,0 +1,153 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="scan_wrapper">
+      <view class="scan" bindtap="scanEnter">
+        <view>
+          <image src="/images/scan.png" style="width:100rpx;height:100rpx;"></image>
+        </view>
+        <view class="text ">
+          <text class="gray">点击图片扫描图书条形码</text>
+        </view>
+      </view>
+    </view>
+    <form bindsubmit="save" class="form-no-class">
+      <view class="weui-cells__title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <image src="/images/cover.png" class="icon"></image>
+            <view class="weui-label">图片</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type="text" class="input" name="id" value="{{id}}" style="display:none"/>
+            <input type="text" class="input" name="pic" value="{{pic}}" style="display:none"/>
+
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__input-box" style="margin-top: 9px;" wx:if="{{pic == ''}}">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+              <view wx:else class="weui-uploader__file" bindtap="chooseImage" style="margin-top: 9px;">
+                <image class="weui-uploader__img" src="{{pic}}" mode="aspectFill"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <image src="/images/category.png" class="icon"></image>
+            <view class="weui-label">分类</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="type" bindchange="bindPickerChange" value="{{type}}" range="{{types}}">
+              <view class="weui-select weui-select_in-select-after">{{types[type]}}</view>
+            </picker>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/bookname.png" class="icon"></image>
+              <view class="weui-label">书名</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="title" class="weui-input" placeholder="必填" value="{{title}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/writer.png" class="icon"></image>
+              <view class="weui-label">作者</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="author" class="weui-input" placeholder="必填" value="{{author}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/price.png" class="icon"></image>
+              <view class="weui-label">价格</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="price" class="weui-input" placeholder="必填" value="{{price}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/category.png" class="icon"></image>
+              <view class="weui-label">出版社</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="publisher" class="weui-input" placeholder="必填" value="{{publisher}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/page.png" class="icon"></image>
+              <view class="weui-label">页数</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="page" class="weui-input" placeholder="必填" value="{{page}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/introduction.png" class="icon"></image>
+              <view class="weui-label">摘要</view>
+            </view>
+            <view class="weui-cell__bd">
+              <textarea maxlength="1000" class="weui-textarea" name="summary" placeholder="必填" value="{{summary}}" style="height: 6em" />
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/international_number.png" class="icon"></image>
+              <view class="weui-label">ISBN</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="isbn" class="weui-input" placeholder="选填" value="{{isbn}}"/>
+            </view>
+        </view>  
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/column.png" class="icon"></image>
+              <view class="weui-label">出版地</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="pubplace" class="weui-input" placeholder="选填" value="{{pubplace}}"/>
+            </view>
+        </view> 
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/column.png" class="icon"></image>
+              <view class="weui-label">出版时间</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="pubdate" class="weui-input" placeholder="选填" value="{{pubdate}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/column.png" class="icon"></image>
+              <view class="weui-label">主题词</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="keyword" class="weui-input" placeholder="请输入主题词" value="{{keyword}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <image src="/images/column.png" class="icon"></image>
+              <view class="weui-label">正文语种</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="language" class="weui-input" placeholder="选填" value="{{language}}"/>
+            </view>
+        </view> 
+      </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" formType="submit">发布</button>
+      </view>
+    </form>
+  </view>
+</view>

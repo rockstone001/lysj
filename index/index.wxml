@@ -1,0 +1,89 @@
+<view class="page" style="height:{{winHeight}}px;">
+  <view class="page__bd">
+      <view class="weui-search-bar">
+          <view class="weui-search-bar__form">
+              <view class="weui-search-bar__box">
+                  <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                  <input type="text" class="weui-search-bar__input" placeholder="搜索书名或者作者" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                  <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                      <icon type="clear" size="14"></icon>
+                  </view>
+              </view>
+              <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                  <icon class="weui-icon-search" type="search" size="14"></icon>
+                  <view class="weui-search-bar__text">搜索书名或者作者</view>
+              </label>
+          </view>
+          <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+      </view>
+      <scroll-view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}" scroll-y style="height:{{winHeight - 48}}px">
+          <navigator url="/index/book?id={{item.id}}" class="weui-cell" hover-class="weui-cell_active" wx:for="{{search_result}}" wx:key="item.id">
+            <template is="search_row" data="{{item}}"/>
+          </navigator>
+          <view class="weui-loadmore weui-loadmore_line" hidden="{{search_result.length > 0}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有记录</view>
+              </view>
+      </scroll-view>
+      <scroll-view scroll-left="{{tabScrollLeft}}" bindscroll="tabScroll" id="tab_list" scroll-x="true" style="white-space: nowrap;" class="swiper-tab"><view wx:for="{{types}}" wx:key="id" class="swiper-tab-list {{index==currentTab ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav" >{{item}}</view></scroll-view>
+      <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 48 - 41}}px;" bindchange="bindChange">  
+        <swiper-item wx:for="{{types}}" wx:key="id" wx:for-index="type_index">  
+          <view class="container">
+            <scroll-view bindscrolltolower="loadMore" scroll-y style="height:{{winHeight - 48 - 41}}px" >
+              <view class="weui-panel weui-panel_access">
+                <view class="weui-panel__bd">
+                  <navigator url="/index/book?id={{item.id}}" class="weui-media-box weui-media-box_appmsg book_item_wrapper" hover-class="weui-cell_active" wx:for="{{books[type_index]}}" wx:key="item.id" wx:for-index="item_index" style="width:{{winWidth*0.5}}px">
+                    <template is="{{item_index % 2 == 0 ? 'book_item_left' : 'book_item_right'}}" data="{{item}}"/>
+                  </navigator>  
+                </view>
+              </view>
+
+              <view class="weui-loadmore" hidden="{{data_options[type_index].is_loading == 0}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+              </view>
+              <view class="weui-loadmore weui-loadmore_line" hidden="{{data_options[type_index].is_loading == 1}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{tips[type_index]}}</view>
+              </view>
+            </scroll-view>
+          </view> 
+        </swiper-item>  
+      </swiper>
+  </view>
+</view>
+
+<template name="book_item_left">
+    <view class="book_item book_item_left" style="">
+      <image wx:if="{{item.pic == ''}}" class="book_pic" src="../images/book.png" mode="aspectFit"></image>
+      <image wx:else class="book_pic" src="{{item.pic}}" mode="aspectFit"></image>
+      <view class="title">{{item.title}}</view>
+      <view class="author">{{item.author}}</view>
+      <view class="distance">距离：{{item.distance}}</view>
+    </view>
+</template>
+
+<template name="book_item_right">
+    <view class="book_item book_item_right" style="">
+      <image wx:if="{{item.pic == ''}}" class="book_pic" src="../images/book.png" mode="aspectFit"></image>
+      <image wx:else class="book_pic" src="{{item.pic}}" mode="aspectFit"></image>
+      <view class="title">{{item.title}}</view>
+      <view class="author">{{item.author}}</view>
+      <view class="distance">距离：{{item.distance}}</view>
+    </view>
+</template>
+
+<template name="search_row">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="width: 20%">
+      <image wx:if="{{item.pic == ''}}" class="weui-media-box__thumb book_pic" src="../images/book.png"></image>
+      <image wx:else class="weui-media-box__thumb book_pic2" src="{{item.pic}}"></image>
+      <image src="/images/tj.png" class="tj" wx:if="{{item.if_recommend == 1}}"></image>
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="width: 50%">
+      <view class="weui-media-box__title one-line">{{item.title}}</view>
+      <view class="weui-media-box__desc one-line subtitle">{{item.publisher}}</view>
+      <view class="weui-media-box__desc one-line subtitle">{{item.author}}</view>
+    </view>
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="width: 30%; margin-right: 0em;">
+      <view class="weui-media-box__desc subtitle text-right">距离：{{item.distance}}</view>
+      <view class="weui-media-box__desc subtitle text-right">{{item.state == 2 ? '已借出' : ''}}</view>
+    </view>
+</template>

@@ -1,0 +1,78 @@
+page {
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.swiper-tab-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+
+}
+.swiper-tab{
+    border-bottom: 1rpx solid #d6d6d6;  
+    text-align: center;  
+    line-height: 40px;
+    height: 40px;
+    display: block;
+}  
+.swiper-tab-list{  
+    font-size: 30rpx;  
+    display: inline-block;
+    color: #777777;  
+    height: 41px;
+    position: relative;
+    top: -1px;
+    width: 25%;
+    margin: 0px;
+    text-align: center;
+}  
+.on{
+    color: #639bdc;
+}  
+  
+.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; } 
+
+.weui-cell {
+  padding-top: 0px;
+}
+.weui-media-box {
+  padding-bottom: 5px;
+}
+.weui-cell::before {
+  border-top-width: 0px;
+}
+.weui-panel::before {
+  display: none;
+}
+.right {
+  text-align: right;
+}
+.right .hollow_btn {
+  color: #639bdc;
+  background-color: #fff;
+  margin-left: 20rpx;
+  border: 1px solid #639bdc;
+}
+
+.right .hollow_btn::after {
+  border-width: 0px;
+}
+
+.right .solid_btn {
+  color: #fff;
+  margin-left: 20rpx;
+  border: 1px solid #639bdc;
+  background-color: #639bdc;
+}
+
+.right .solid_btn::after {
+  border-width: 0px;
+}
+
+.red {
+  color:#f10214;
+}
+.page {
+  color:#4a4a4a;
+}

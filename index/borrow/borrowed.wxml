@@ -1,0 +1,55 @@
+<view class="page">
+  <include src="/include/return.wxml" />
+  <view class="book_info">
+    <view class="pic">
+      <image src="{{pic}}" style="width: {{winWidth * 0.6}}px"></image>
+    </view>
+    <view class="row title" style="margin-left: {{winWidth * 0.2}}px; width: {{winWidth * 0.6}}px">
+      <label>{{title}}</label>
+    </view>
+    <view class="row" style="margin-left: {{winWidth * 0.2}}px; width: {{winWidth * 0.6}}px">
+      <label class="left">作者:</label>
+      <label class="right">{{author}}</label>
+    </view>
+    <view class="row" style="margin-left: {{winWidth * 0.2}}px; width: {{winWidth * 0.6}}px">
+      <label class="left">出版社:</label>
+      <label class="right">{{publisher}}</label>
+    </view>
+    <view class="row" style="margin-left: {{winWidth * 0.2}}px; width: {{winWidth * 0.6}}px">
+      <label class="left">出版日期:</label>
+      <label class="right">{{pubdate}}</label>
+    </view>
+    <view class="row" style="margin-left: {{winWidth * 0.2}}px; width: {{winWidth * 0.6}}px">
+      <label class="left">页数:</label>
+      <label class="right">{{page}}</label>
+    </view>
+    <view class="row" style="margin-left: {{winWidth * 0.2}}px; width: {{winWidth * 0.6}}px">
+      <label class="left">ISBN:</label>
+      <label class="right">{{isbn}}</label>
+    </view>
+  </view>
+  <view style="margin-left: {{winWidth * 0.2}}px; width: {{winWidth * 0.6}}px">
+    <view class="row msg" wx:if="{{borrow_state == 1}}">
+      <icon type="success" size="40" class="left"/>
+      <view class="right ok-info" >
+        <view>操作成功</view><view>请在{{borrow_days}}天内归还</view>
+      </view>
+    </view>
+    <view class="row msg" wx:elif="{{borrow_state == 2}}">
+      <icon type="success" size="40" class="left"/>
+      <view class="right ok-info2" >
+        <view>还书成功</view>
+      </view>
+    </view>
+    <view class="row msg" wx:else>
+      <icon type="warn" size="40" class="left"/>
+      <view class="right error-info" >
+        {{msg}}
+      </view>
+    </view>
+  </view>
+  <view class="cells btn_area" style="width: {{winWidth - 20}}px; margin-left: 10px; margin-top: 20px;">
+      <button type="primary" size="default" bindtap="back"> {{borrow_state == 1 ? '继续' : '返回重试'}} </button>
+  </view>
+  <view class="" style="height: 1px;"></view>
+</view>

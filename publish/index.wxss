@@ -1,0 +1,25 @@
+.scan_wrapper {
+  width: 100%;
+  text-align: center;
+}
+.scan {
+  display: inline-block;
+  background-color: #f7f7f7;
+  width: 400rpx;
+  margin-top: 30rpx;
+}
+.scan image {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.scan .text {
+  font-size: .8em;
+  display: inline-block;
+  margin-bottom: 30rpx;
+}
+.weui-label {
+  display: inline-block;
+}
+.icon {
+  margin-right: 5px;vertical-align: middle;width:20px; height: 20px;
+}

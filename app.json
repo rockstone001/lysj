@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "index/index",
+    "index/book",
+    "publish/index",
+    "mine/index",
+    "index/borrow/index",
+    "mine/my_books/index",
+    "mine/user_info",
+    "mine/my_books/edit",
+    "mine/my_books/setting"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#639bdc",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#56abe4",
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "index/index",
+        "text": "图书",
+        "iconPath": "images/library1.png",
+        "selectedIconPath": "images/library.png"
+      },
+      {
+        "pagePath": "publish/index",
+        "text": "发布",
+        "iconPath": "images/borrow1.png",
+        "selectedIconPath": "images/borrow.png"
+      },
+      {
+        "pagePath": "mine/index",
+        "text": "我的",
+        "iconPath": "images/myself1.png",
+        "selectedIconPath": "images/myself.png"
+      }
+    ]
+  }
+}

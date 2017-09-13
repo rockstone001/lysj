@@ -1,0 +1,46 @@
+<view class="page">
+  <include src="/include/return.wxml" />
+  <view class="page__bd">
+    <view class="basic_info">
+      <image src="{{pic}}"></image>
+      <view class="text_info">
+        <view class="title">{{title}}</view>
+        <view class="author">作者：{{author}}</view>
+        <view class="price">出版社：{{publisher}}</view>
+        <view class="price">页数：{{page}}</view>
+        <view class="price">价格：￥{{price}}</view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">共享者</view>
+          <view class="weui-cell__ft">{{nickname}}</view>
+      </view>
+      <view class="weui-cell" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">所在小区</view>
+          <view class="weui-cell__ft">{{location}}</view>
+      </view>
+      <view class="weui-cell" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">距离</view>
+          <view class="weui-cell__ft">{{distance}}</view>
+      </view>
+      <view class="weui-cell" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">状态</view>
+          <view class="weui-cell__ft">{{state == 2 ? '已借出' : '未借出'}}</view>
+      </view>
+      <navigator url="book_booked?id={{id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">预约者</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+      </navigator>
+    </view>
+    <view class="summary">
+      <view class="title">图书摘要</view>
+      <text>{{summary}}</text>
+    </view>
+  </view>
+  <view class="operation">
+    <view class="collect" bindtap='collect'><image src="{{is_collected ? '/images/collect.png' : '/images/collect1.png'}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>收藏</view>
+    <view class="communicate"><image src="/images/chat.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>沟通</view>
+    <view class="borrow" bindtap='book'><text>{{is_booked ? '取消预约' : '预约'}}</text></view>
+  </view>
+</view>

@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="basic_info">
+      <image src="{{pic}}"></image>
+      <view class="text_info">
+        <view class="title">{{title}}</view>
+        <view class="author">作者：{{author}}</view>
+        <view class="price">价格：￥{{price}}</view>
+      </view>
+    </view>
+    <form bindsubmit="save" class="form-no-class">
+      <view class="weui-cells__title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">押金(还书即退)</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="deposit" class="weui-input" placeholder="不超过原书价格" value="{{deposit}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">借阅天数</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="borrow_days" class="weui-input" placeholder="请输入天数" value="{{borrow_days}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">借阅价格</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="charge" class="weui-input" placeholder="不超过原书价格10%" value="{{charge}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">逾期价格</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="expire_charge" class="weui-input" placeholder="逾期每天多少金额" value="{{expire_charge}}"/>
+            </view>
+        </view>
+      </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" formType="submit">发布</button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+.pic {
+  text-align: center;
+  margin-top: 20px;
+}
+.pic image {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+page {
+  background-color: #fff;
+}
+
+.book_info .title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1em;
+  text-align: center;
+  margin: 15px;
+}
+.row {
+  font-size: .9em;
+}
+.row .left {
+  margin-right: 5px;
+}
+.msg {
+  margin-top: 60rpx;
+}
+.ok-info {
+  font-size: 1em;
+  color: #1aad19;
+  height: 40px;
+  line-height: 20px;
+}
+.ok-info2 {
+  font-size: 1em;
+  color: #1aad19;
+  height: 40px;
+  line-height: 40px;
+}
+
+.error-info {
+  height:40px;
+  line-height:40px;
+  color: #f76260;
+}
+.msg .left {
+  float: left;
+}

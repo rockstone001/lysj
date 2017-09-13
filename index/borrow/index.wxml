@@ -1,0 +1,42 @@
+<view class="page">
+  <include src="/include/return.wxml" />
+  <view class="page__bd">
+    <view class="basic_info">
+      <image src="{{pic}}"></image>
+      <view class="text_info">
+        <view class="title">{{title}}</view>
+        <view class="author">作者：{{author}}</view>
+        <view class="price">价格：￥{{price}}</view>
+        <view class="charge red">价格：￥{{charge}} ({{borrow_days}}天)</view>
+      </view>
+    </view>
+    <form bindsubmit="save" class="form-no-class">
+      <view class="weui-cells__title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">押金(还书即退)</view>
+            <view class="weui-cell__ft red">￥{{deposit}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">实付金额</view>
+            <view class="weui-cell__ft red">￥{{(charge * 100 + deposit * 100) * 0.01}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">借阅日期</view>
+            <view class="weui-cell__ft">{{borrow_date}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">支付方式</view>
+            <view class="weui-cell__ft">微信支付</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">逾期金额</view>
+            <view class="weui-cell__ft">￥{{expire_charge}}/天</view>
+        </view>
+      </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" formType="submit">确认借阅</button>
+      </view>
+    </form>
+  </view>
+</view>
