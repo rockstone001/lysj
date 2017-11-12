@@ -22,6 +22,7 @@ App({
       }
     });
     this.getUserInfo();
+    console.log('nima');
   },
 
   login: function () {
@@ -54,7 +55,7 @@ App({
                   console.log('登录返回');
                   console.log(res.data);
                   if (typeof res.data == 'string') {
-                    console.log('is string');
+                    console.log('is string' + res.data);
                     res.data = JSON.parse(res.data);
                   }
                   console.log(res.data);
@@ -89,7 +90,7 @@ App({
       wx.getUserInfo({
         withCredentials: true,
         success: function (res) {
-          console.log(res.userInfo);
+          // console.log(res.userInfo);
           that.globalData.userInfo = res.userInfo
           typeof cb == "function" && cb(that.globalData.userInfo)
         }
@@ -100,8 +101,7 @@ App({
   globalData: {
     userInfo: null,
     Config: {
-      "apiHost": "https://www.idaosh.com/php/lysj_api/index.php/"
-    },
-    if_redirect_to_my_books: false  //是否跳转到我的图书
+      "apiHost": "https://www.idaosh.com/php/jcy_api/index.php/"
+    }
   }
 })

@@ -68,3 +68,6 @@ page{
 .no-tj {
   display: none;
 }
+.weui-btn-area .weui-btn {
+  background-color:#6c9bdc;
+}

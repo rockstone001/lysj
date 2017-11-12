@@ -1,7 +1,0 @@
-/* user_info.wxss */
-.icon {
-  margin-right: 5px;vertical-align: middle;width:20px; height: 20px;
-}
-.weui-label {
-  display: inline-block;
-}
